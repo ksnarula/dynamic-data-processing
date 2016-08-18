@@ -7,6 +7,11 @@ namespace DynamicDataProcessing
 {
     public class Processor
     {
+        private object[] markers;
 
+        public Processor(int categories)
+        {
+            markers = new object[categories + 1];
+        }
     }
 }

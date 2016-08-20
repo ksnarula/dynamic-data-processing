@@ -174,7 +174,7 @@ namespace DynamicDataProcessing
 
         }
 
-        private void adjustForNonidealPlacement(int markerIndex, int d)
+        private void adjustForNonidealPlacement(int markerIndex, float d)
         {
             float height = markers[markerIndex][1];     //Get current marker height
             float forwardMarker = markers[markerIndex+1][0], backwardMarker = markers[markerIndex - 1][0];      //Get adjacent marker placements

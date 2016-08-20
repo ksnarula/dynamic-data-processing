@@ -13,10 +13,11 @@ namespace DynamicDataProcessing
         private Stack<float> standardSettingValues;
         float[] percentiles;
         private bool initialPhase;
+        private float percentile;
 
-        public QuantileCalculator()
+        public QuantileCalculator(float percentile)
         {
-            numOfCategories = 10;
+            numOfCategories = 4;
             if(numOfCategories%2 != 0)
             {
                 numOfCategories++;

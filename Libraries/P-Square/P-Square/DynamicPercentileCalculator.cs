@@ -8,24 +8,17 @@ namespace DynamicDataProcessing
 {
     class DynamicPercentileCalculator
     {
-        private int numOfCategories;
         float[][] markers;        
         private Stack<float> standardSettingValues;
-        float[] percentiles;
         private bool initialPhase;
         private float percentile;
 
         public DynamicPercentileCalculator(float percentile)
         {
-            numOfCategories = 4;
-            if(numOfCategories%2 != 0)
-            {
-                numOfCategories++;
-            }
+            this.percentile = percentile;
 
-            markers = new float[numOfCategories + 1][];
+            markers = new float[5][];
             standardSettingValues = new Stack<float>();
-            percentiles = new float[1];
             
             initialPhase = true;
         }
@@ -45,11 +38,11 @@ namespace DynamicDataProcessing
         #region Controllers
         private void phase1Controller(float observation)
         {
-            if (standardSettingValues.Count < numOfCategories + 1)
+            if (standardSettingValues.Count < markers.Length)
             {
                 standardSettingValues.Push(observation);
             }
-            else if (standardSettingValues.Count == (numOfCategories + 1))
+            else if (standardSettingValues.Count == (markers.Length))
             {
                 float[] temp = new float[standardSettingValues.Count];
                 for (int i = 0; i < temp.Length; i++)

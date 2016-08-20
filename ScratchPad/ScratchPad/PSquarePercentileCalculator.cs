@@ -8,17 +8,17 @@ namespace PSquare
 {
     class PSquarePercentileCalculator
     {
-        private float[][] markers;      //Array to keep track of marker position and height.
-        private Stack<float> standardSettingValues;     //Initial stack to store the first 5 data values.
+        public double[][] markers;      //Array to keep track of marker position and height.
+        private Stack<double> standardSettingValues;     //Initial stack to store the first 5 data values.
         private bool initialPhase;      //Switch toggling between the first phase (just collection) and second phase (marker adjustment).
-        private float percentile;       //The user-defined percentile to calculate markers for.
+        private double percentile;       //The user-defined percentile to calculate markers for.
 
         public PSquarePercentileCalculator(double percentile)
         {
-            this.percentile = (float)percentile;
+            this.percentile = (double)percentile;
 
-            markers = new float[5][];       //Default of 5 markers used when calculating quantiles as per the P-Square Algorithm.
-            standardSettingValues = new Stack<float>();
+            markers = new double[5][];       //Default of 5 markers used when calculating quantiles as per the P-Square Algorithm.
+            standardSettingValues = new Stack<double>();
 
             initialPhase = true;
         }
@@ -26,11 +26,11 @@ namespace PSquare
         /// <summary>
         /// Add the latest data value to the class and readjust all marker placements and heights.
         /// </summary>
-        /// <param name="observation">Float value of the latest data observation.</param>
+        /// <param name="observation">double value of the latest data observation.</param>
         /// <returns>Height of the adjusted marker representing the percentile value for the dataset. -1 if there is not enough data to calculate.</returns>
-        public float addObservation(double userObservation)
+        public double addObservation(double userObservation)
         {
-            float observation = (float)userObservation;
+            double observation = (double)userObservation;
 
             switch (initialPhase)
             {
@@ -46,7 +46,7 @@ namespace PSquare
         }
 
         #region Controllers
-        private void phase1Controller(float observation)
+        private void phase1Controller(double observation)
         {
             if (standardSettingValues.Count < markers.Length)
             {
@@ -56,7 +56,7 @@ namespace PSquare
             {
                 initialPhase = !initialPhase;
 
-                float[] temp = new float[standardSettingValues.Count];
+                double[] temp = new double[standardSettingValues.Count];
                 for (int i = 0; i < temp.Length; i++)
                 {
                     temp[i] = standardSettingValues.Pop();
@@ -66,14 +66,14 @@ namespace PSquare
 
                 for (int i = 0; i < temp.Length; i++)
                 {
-                    markers[i] = new float[] { i, temp[i] };
+                    markers[i] = new double[] { i, temp[i] };
                 }
             }
             else
                 return;
         }
 
-        private float phase2Controller(float observation)
+        private double phase2Controller(double observation)
         {
             //Check min.
             if (markers[0][1] > observation)
@@ -134,8 +134,8 @@ namespace PSquare
         //If they are not, then adjust marker heights and placements so they conform to the assumed qudratic trend
         private void checkForIdealPlacement(int markerIndex)
         {
-            float n = markers[markers.Length - 1][0];    //Total number of data points (placement of the final marker).
-            float idealPlacement;
+            double n = markers[markers.Length - 1][0];    //Total number of data points (placement of the final marker).
+            double idealPlacement;
 
             //Calculate ideal positions for the three internal markers
             switch (markerIndex)
@@ -156,7 +156,7 @@ namespace PSquare
                     return;
             }
 
-            float d = idealPlacement - markers[markerIndex][0];     //Calculate delta between ideal placement and real placement of marker
+            double d = idealPlacement - markers[markerIndex][0];     //Calculate delta between ideal placement and real placement of marker
 
             //If marker placement is not within one unit of ideal placement, then adjust its height value
             if ((d > 1) || (d < -1))
@@ -178,14 +178,14 @@ namespace PSquare
 
         }
 
-        private void adjustForNonidealPlacement(int markerIndex, float d)
+        private void adjustForNonidealPlacement(int markerIndex, double d)
         {
-            float height = markers[markerIndex][1];     //Get current marker height
-            float forwardMarker = markers[markerIndex + 1][0], backwardMarker = markers[markerIndex - 1][0];      //Get adjacent marker placements
+            double height = markers[markerIndex][1];     //Get current marker height
+            double forwardMarker = markers[markerIndex + 1][0], backwardMarker = markers[markerIndex - 1][0];      //Get adjacent marker placements
 
-            float a = d / (forwardMarker - backwardMarker);
-            float b = (markers[markerIndex][0] - markers[markerIndex - 1][0] + d) * (markers[markerIndex + 1][1] - height) / (markers[markerIndex + 1][0] - markers[markerIndex][0]);
-            float c = (markers[markerIndex + 1][0] - markers[markerIndex][0] - d) * (height - markers[markerIndex - 1][1]) / (markers[markerIndex][0] - markers[markerIndex - 1][0]);
+            double a = d / (forwardMarker - backwardMarker);
+            double b = (markers[markerIndex][0] - markers[markerIndex - 1][0] + d) * (markers[markerIndex + 1][1] - height) / (markers[markerIndex + 1][0] - markers[markerIndex][0]);
+            double c = (markers[markerIndex + 1][0] - markers[markerIndex][0] - d) * (height - markers[markerIndex - 1][1]) / (markers[markerIndex][0] - markers[markerIndex - 1][0]);
 
             markers[markerIndex][1] = height + (a * (b + c));
         }

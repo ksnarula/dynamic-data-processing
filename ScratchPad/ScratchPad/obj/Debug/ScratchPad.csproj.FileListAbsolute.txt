@@ -1,0 +1,5 @@
+E:\Coding\src\personal-helper-classes\ScratchPad\ScratchPad\bin\Debug\ScratchPad.exe.config
+E:\Coding\src\personal-helper-classes\ScratchPad\ScratchPad\bin\Debug\ScratchPad.exe
+E:\Coding\src\personal-helper-classes\ScratchPad\ScratchPad\bin\Debug\ScratchPad.pdb
+E:\Coding\src\personal-helper-classes\ScratchPad\ScratchPad\obj\Debug\ScratchPad.exe
+E:\Coding\src\personal-helper-classes\ScratchPad\ScratchPad\obj\Debug\ScratchPad.pdb

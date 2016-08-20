@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicDataProcessing", "DynamicDataProcessing\DynamicDataProcessing.csproj", "{258ABB2D-70BE-48BA-AAA0-E8C9E5835F74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSquare", "PSquare\PSquare.csproj", "{6BB8DDCA-DE68-4422-85E6-D0C54C29A2A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{258ABB2D-70BE-48BA-AAA0-E8C9E5835F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{258ABB2D-70BE-48BA-AAA0-E8C9E5835F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{258ABB2D-70BE-48BA-AAA0-E8C9E5835F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{258ABB2D-70BE-48BA-AAA0-E8C9E5835F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BB8DDCA-DE68-4422-85E6-D0C54C29A2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BB8DDCA-DE68-4422-85E6-D0C54C29A2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BB8DDCA-DE68-4422-85E6-D0C54C29A2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BB8DDCA-DE68-4422-85E6-D0C54C29A2A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

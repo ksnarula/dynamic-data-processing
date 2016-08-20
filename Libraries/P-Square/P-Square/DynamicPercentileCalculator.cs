@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DynamicDataProcessing
 {
-    class QuantileCalculator
+    class DynamicPercentileCalculator
     {
         private int numOfCategories;
         float[][] markers;        
@@ -15,7 +15,7 @@ namespace DynamicDataProcessing
         private bool initialPhase;
         private float percentile;
 
-        public QuantileCalculator(float percentile)
+        public DynamicPercentileCalculator(float percentile)
         {
             numOfCategories = 4;
             if(numOfCategories%2 != 0)

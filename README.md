@@ -1,2 +1,3 @@
-# dynamic-data-processing
-Written in C#. Dynamically process incoming data points and adjust min, max, median, and first and third quartiles. Useful for calculating relative intensities and categorizing incoming data without storing all data points. 
+# personal-helper-classes
+Written in C#. 
+Helper classes written by me. As I work on projects and the need arises to write a class, whether static, portable, or otherwise, I will update this repository with my code. 

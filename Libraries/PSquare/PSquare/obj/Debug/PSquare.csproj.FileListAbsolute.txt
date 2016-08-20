@@ -1,0 +1,4 @@
+E:\Coding\src\personal-helper-classes\Libraries\PSquare\PSquare\bin\Debug\PSquare.dll
+E:\Coding\src\personal-helper-classes\Libraries\PSquare\PSquare\bin\Debug\PSquare.pdb
+E:\Coding\src\personal-helper-classes\Libraries\PSquare\PSquare\obj\Debug\PSquare.dll
+E:\Coding\src\personal-helper-classes\Libraries\PSquare\PSquare\obj\Debug\PSquare.pdb

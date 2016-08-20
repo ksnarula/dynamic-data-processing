@@ -4,22 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamicDataProcessing
+namespace PSquare
 {
-    class DynamicPercentileCalculator
+    class PSquarePercentileCalculator
     {
         float[][] markers;      //Array to keep track of marker position and height.
         private Stack<float> standardSettingValues;     //Initial stack to store the first 5 data values.
         private bool initialPhase;      //Switch toggling between the first phase (just collection) and second phase (marker adjustment).
         private float percentile;       //The user-defined percentile to calculate markers for.
 
-        public DynamicPercentileCalculator(float percentile)
+        public PSquarePercentileCalculator(float percentile)
         {
             this.percentile = percentile;
 
             markers = new float[5][];       //Default of 5 markers used when calculating quantiles as per the P-Square Algorithm.
             standardSettingValues = new Stack<float>();
-            
+
             initialPhase = true;
         }
 
@@ -72,19 +72,19 @@ namespace DynamicDataProcessing
         private float phase2Controller(float observation)
         {
             //Check min.
-            if(markers[0][1] > observation)
+            if (markers[0][1] > observation)
             {
                 markers[0][1] = observation;    //Set height to new min. No need to shift marker.
 
                 //Increment all marker positions to the right by one
                 for (int i = 1; i <= markers.Length; i++)
                 {
-                    markers[i][0] = markers[i][0] + 1;  
+                    markers[i][0] = markers[i][0] + 1;
                 }
             }
 
             //Check max.
-            else if (markers[markers.Length-1][1] <= observation)
+            else if (markers[markers.Length - 1][1] <= observation)
             {
                 markers[markers.Length - 1][0] = markers[markers.Length - 1][0] + 1;    //Move marker over one.
                 markers[markers.Length - 1][1] = observation;   //Set height to new max.
@@ -93,34 +93,34 @@ namespace DynamicDataProcessing
             //Make internal adjustments if not an extreme value.
             else
             {
-                int index = markers.Length-1;
+                int index = markers.Length - 1;
 
                 //Find index of first marker with greater height than observation.
-                for(int i = 0; i < markers.Length; i++)
+                for (int i = 0; i < markers.Length; i++)
                 {
-                    if(markers[i][1] > observation)
+                    if (markers[i][1] > observation)
                     {
                         index = i;
                         break;
                     }
                 }
-                
+
                 //Increment all markers to the right of observation by one unit (start at index).
-                for(int i = index; i < markers.Length; i++)
+                for (int i = index; i < markers.Length; i++)
                 {
                     markers[i][0] = markers[i][0] + 1;
                 }
 
                 //Check for ideal marker placement and adjust for parabolic trend if that is not present
-                for (int i = 1; i < markers.Length-1; i++)
+                for (int i = 1; i < markers.Length - 1; i++)
                 {
                     checkForIdealPlacement(i);
                 }
-                
+
 
             }
 
-            return markers[markers.Length/2][1];        //Return the value of the middle marker, representing the percentile value.
+            return markers[markers.Length / 2][1];        //Return the value of the middle marker, representing the percentile value.
         }
         #endregion
 
@@ -155,11 +155,11 @@ namespace DynamicDataProcessing
             float d = idealPlacement - markers[markerIndex][0];     //Calculate delta between ideal placement and real placement of marker
 
             //If marker placement is not within one unit of ideal placement, then adjust its height value
-            if((d > 1) || (d < -1))
+            if ((d > 1) || (d < -1))
             {
-                if(d > 1)
+                if (d > 1)
                 {
-                    d = 1; 
+                    d = 1;
                 }
                 else if (d < -1)
                 {
@@ -177,7 +177,7 @@ namespace DynamicDataProcessing
         private void adjustForNonidealPlacement(int markerIndex, float d)
         {
             float height = markers[markerIndex][1];     //Get current marker height
-            float forwardMarker = markers[markerIndex+1][0], backwardMarker = markers[markerIndex - 1][0];      //Get adjacent marker placements
+            float forwardMarker = markers[markerIndex + 1][0], backwardMarker = markers[markerIndex - 1][0];      //Get adjacent marker placements
 
             float a = d / (forwardMarker - backwardMarker);
             float b = (markers[markerIndex][0] - markers[markerIndex - 1][0] + d) * (markers[markerIndex + 1][1] - height) / (markers[markerIndex + 1][0] - markers[markerIndex][0]);

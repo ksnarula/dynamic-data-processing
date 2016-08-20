@@ -1,5 +1,0 @@
-E:\Coding\src\personal-helper-classes\Libraries\P-Square\P-Square\bin\Debug\P-Square.dll
-E:\Coding\src\personal-helper-classes\Libraries\P-Square\P-Square\bin\Debug\P-Square.pdb
-E:\Coding\src\personal-helper-classes\Libraries\P-Square\P-Square\obj\Debug\P-Square.csprojResolveAssemblyReference.cache
-E:\Coding\src\personal-helper-classes\Libraries\P-Square\P-Square\obj\Debug\P-Square.dll
-E:\Coding\src\personal-helper-classes\Libraries\P-Square\P-Square\obj\Debug\P-Square.pdb
